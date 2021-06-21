@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  server:
+    container_name: yalantis_moisieiev_test_server
+    image: golang:1.15.13-alpine3.13
+    ports:
+      - "8110:80"
+    volumes:
+      - .:/app
+      - ./logs:/logs
+    restart: always
+    command: go run /app/cmd/server.go 2>> /logs/app.log
